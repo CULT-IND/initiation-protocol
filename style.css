@@ -2,7 +2,7 @@ body {
   background-color: black;
   color: #00ff00;
   font-family: 'Courier New', Courier, monospace;
-  font-size: 75vw; /* Increase from 5vw to 7vw */
+  font-size: 7vw; /* Bigger text for mobile */
   padding: 1rem;
   margin: 0;
   line-height: 1.5;
@@ -10,19 +10,7 @@ body {
   white-space: pre-wrap;
 }
 
-.terminal {
-  display: inline-block;
-  font-size: 1.2rem;
-  white-space: pre-wrap;
-  line-height: 1.4;
-}
-
-#output {
-  white-space: pre-wrap;
-  display: inline;
-}
-
-#cursor {
+.cursor {
   display: inline-block;
   animation: blink 1s step-start infinite;
 }
