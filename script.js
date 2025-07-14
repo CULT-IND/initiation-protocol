@@ -1,6 +1,5 @@
 const output = document.getElementById("output");
 const text = `INITIATION PROTOCOL: ENGAGED\n\nWelcome,\nThe first step into knowing who WE are starts now.`;
-
 let i = 0;
 
 function type() {
