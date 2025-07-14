@@ -1,14 +1,13 @@
 body {
-  background: black;
+  background-color: black;
   color: #00ff00;
   font-family: 'Courier New', Courier, monospace;
-  font-size: 50vw;
+  font-size: 7vw; /* Increase from 5vw to 7vw */
+  padding: 1rem;
   margin: 0;
-  padding: 2rem;
-  height: 100vh;
-  display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
+  line-height: 1.5;
+  overflow-x: hidden;
+  white-space: pre-wrap;
 }
 
 .terminal {
