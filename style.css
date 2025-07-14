@@ -2,7 +2,7 @@ body {
   background-color: black;
   color: #00ff00;
   font-family: 'Courier New', Courier, monospace;
-  font-size: 6vw; /* Bigger text for mobile */
+  font-size: 5vw; /* Bigger text for mobile */
   padding: 1rem;
   margin: 0;
   line-height: 1.5;
