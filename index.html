@@ -2,14 +2,69 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Matrix Protocol</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Matrix Countdown</title>
+  <style>
+    body {
+      background: black;
+      color: #00ff00;
+      font-family: 'Courier New', monospace;
+      font-size: 7vw;      /* adjust as needed */
+      padding: 1rem;
+      margin: 0;
+      line-height: 1.5;
+      white-space: pre-wrap;
+      overflow-x: hidden;
+    }
+    .terminal {
+      display: block;
+    }
+    .cursor {
+      display: inline-block;
+      animation: blink 1s step-start infinite;
+    }
+    @keyframes blink {
+      50% { opacity: 0; }
+    }
+  </style>
 </head>
 <body>
   <div class="terminal" id="terminal">
-    <span id="output"></span><span class="cursor">█</span>
+    <span id="output">
+      Sssh.....<br><br>
+    </span>
+    <span id="timer">Loading...</span>
+    <span class="cursor">█</span>
   </div>
-  <script src="script.js"></script>
+
+  <script>
+    (function(){
+      const timerEl = document.getElementById('timer');
+      const target = new Date('August 6, 2025 00:00:00').getTime();
+
+      function update() {
+        const now = Date.now();
+        const diff = target - now;
+
+        if (diff <= 0) {
+          timerEl.textContent = '00d 00h 00m 00s';
+          return;
+        }
+        const days  = Math.floor(diff / 86400000);
+        const hours = Math.floor((diff % 86400000) / 3600000);
+        const mins  = Math.floor((diff % 3600000) / 60000);
+        const secs  = Math.floor((diff % 60000) / 1000);
+
+        timerEl.textContent = 
+          String(days).padStart(2,'0') + 'd ' +
+          String(hours).padStart(2,'0') + 'h ' +
+          String(mins).padStart(2,'0') + 'm ' +
+          String(secs).padStart(2,'0') + 's';
+      }
+
+      update();
+      setInterval(update, 1000);
+    })();
+  </script>
 </body>
 </html>
