@@ -34,7 +34,7 @@
     const outputEl = document.getElementById('output');
     const cursorEl = document.querySelector('.cursor');
 
-    const text = `Ssshhh....\n\n\n`;
+    const text = `Ssssh....\n\n\n`;
     let i = 0;
 
     function typeWriter() {
@@ -42,7 +42,7 @@
         const char = text[i] === '\n' ? '<br>' : text[i];
         outputEl.innerHTML += char;
         i++;
-        setTimeout(typeWriter, 50); // Speed of typing
+        setTimeout(typeWriter, 40); // Speed of typing
       } else {
         startCountdown();
       }
