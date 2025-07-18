@@ -2,22 +2,19 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Matrix Countdown</title>
   <style>
     body {
       background: black;
       color: #00ff00;
       font-family: 'Courier New', monospace;
-      font-size: 7vw;      /* adjust as needed */
+      font-size: 7vw;
       padding: 1rem;
       margin: 0;
       line-height: 1.5;
       white-space: pre-wrap;
       overflow-x: hidden;
-    }
-    .terminal {
-      display: block;
     }
     .cursor {
       display: inline-block;
@@ -29,27 +26,43 @@
   </style>
 </head>
 <body>
-  <div class="terminal" id="terminal">
-    <span id="output">
-      Sssh.....<br><br>
-    </span>
-    <span id="timer">Loading...</span>
-    <span class="cursor">█</span>
+  <div id="terminal">
+    <span id="output"></span><span class="cursor">█</span>
   </div>
 
   <script>
-    (function(){
-      const timerEl = document.getElementById('timer');
-      const target = new Date('August 6, 2025 00:00:00').getTime();
+    const outputEl = document.getElementById('output');
+    const cursorEl = document.querySelector('.cursor');
 
-      function update() {
+    const text = `Ssshhh....\n\n\n`;
+    let i = 0;
+
+    function typeWriter() {
+      if (i < text.length) {
+        const char = text[i] === '\n' ? '<br>' : text[i];
+        outputEl.innerHTML += char;
+        i++;
+        setTimeout(typeWriter, 50); // Speed of typing
+      } else {
+        startCountdown();
+      }
+    }
+
+    function startCountdown() {
+      const timerEl = document.createElement('span');
+      outputEl.appendChild(timerEl);
+
+      const targetDate = new Date('August 6, 2025 00:00:00').getTime();
+
+      function updateTimer() {
         const now = Date.now();
-        const diff = target - now;
+        const diff = targetDate - now;
 
         if (diff <= 0) {
           timerEl.textContent = '00d 00h 00m 00s';
           return;
         }
+
         const days  = Math.floor(diff / 86400000);
         const hours = Math.floor((diff % 86400000) / 3600000);
         const mins  = Math.floor((diff % 3600000) / 60000);
@@ -62,9 +75,11 @@
           String(secs).padStart(2,'0') + 's';
       }
 
-      update();
-      setInterval(update, 1000);
-    })();
+      updateTimer();
+      setInterval(updateTimer, 1000);
+    }
+
+    typeWriter();
   </script>
 </body>
 </html>
